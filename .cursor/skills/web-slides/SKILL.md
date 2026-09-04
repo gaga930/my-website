@@ -4,20 +4,21 @@ description: >-
   以網頁製作簡報／週報內容：預設章節式連續捲動（非全螢幕分頁），避免空白佔高。
   含進度卡、SVG 甘特圖、表格盤點、附件全寬區隔等章節版型。
   當使用者要求製作簡報、投影片、presentation、deck、slides、週報、網頁式簡報，
-  甘特圖／時程圖／附件、上載／推送到 git／GitHub Pages，
-  或在本專案新增／修改簡報內容時使用。
+  甘特圖／時程圖／附件，或在本專案新增／修改簡報內容時使用。
+  上載／推送 git 請用 publish-to-git，不要用本 skill。
 ---
 
 # 網頁式簡報（Web Slides）
 
 本專案以**網頁**承載簡報／週報，不是 PPT/Google Slides。Agent 製作或修改時必須遵循本 skill。
 
+上載到 Git／GitHub Pages → 改讀 **publish-to-git** skill，本檔不處理 commit／push。
+
 ## 何時啟用
 
 - 建立新簡報、週報、新增章節、改版既有 deck
 - 使用者提到：簡報、投影片、slides、presentation、deck、週報、演講稿頁面
 - 需要調整簡報視覺、動效、章節導覽或素材嵌入
-- 使用者要求「上載到 git／推送／發布／更新 GitHub Pages」
 
 ## 核心原則
 
@@ -42,7 +43,7 @@ description: >-
 - [ ] 5. 接上章節 TOC 錨點（可選：捲動高亮）
 - [ ] 6. 瀏覽器預覽：無無謂留白、對比、窄螢幕
 - [ ] 7. 精簡文案後交付
-- [ ] 8. （僅使用者要求時）上載到 Git／GitHub Pages → 見「上載到 Git」
+- [ ] 8. （僅使用者要求時）上載 → 改用 publish-to-git skill
 ```
 
 ### Step 1–2：大綱先於視覺
@@ -316,66 +317,10 @@ body { overflow-x: hidden; overflow-y: auto; } /* 允許捲動 */
 2. **章節結構**（不是頁數）
 3. TOC／錨點說明；若有外部連結一併註明
 4. 已知限制
-5. 若已上載：給出 commit、repo、Pages 網址
-
-## 上載到 Git（GitHub Pages）
-
-僅在使用者**明確要求**「上載到 git／推送／發布／更新網站」時執行。不要擅自 commit 或 push。
-
-### 本專案現況（週報 deck）
-
-| 項目 | 值 |
-|------|-----|
-| Git 根目錄 | `decks/weekly-report-260903/`（**不是** `slides_buider` 專案根） |
-| Remote | `https://github.com/gaga930/my-website.git` |
-| 分支 | `main`（deck 檔案即站點根目錄） |
-| 網站 | `https://gaga930.github.io/my-website/` |
-
-之後若換 deck／repo，先在該目錄跑 `git remote -v` 確認，再依同樣步驟操作。
-
-### 步驟
-
-1. **進入該 deck 的 git 根目錄**（含 `.git` 的那層，通常就是要發布的 `index.html` 所在目錄）。
-2. 檢查狀態與差異：
-   - `git status`
-   - `git diff`／`git diff --stat`
-   - `git log -5 --oneline`（對齊既有 commit 語氣）
-3. **Stage 僅相關檔案**（例：`index.html`、`styles.css`、`deck.js`、`assets/`）。不要把暫存、密鑰、本機筆記一起加進去。
-4. **Commit**（訊息用英文一句、說明 why；PowerShell 可用 here-string）：
-
-```powershell
-git add index.html styles.css
-git commit -m @"
-Move H2 schedule to appendix and add bonus table SVG Gantt from schedule waves.
-"@
-```
-
-5. **若 commit 失敗且提示 Author identity unknown**：**禁止**執行 `git config`（含 `--global`／local）。改用上一筆 commit 的作者，以環境變數單次帶入：
-
-```powershell
-git log -1 --format='%an%n%ae'
-# 假設得到 gaga930 / gaga930@users.noreply.github.com
-$env:GIT_AUTHOR_NAME='gaga930'
-$env:GIT_AUTHOR_EMAIL='gaga930@users.noreply.github.com'
-$env:GIT_COMMITTER_NAME='gaga930'
-$env:GIT_COMMITTER_EMAIL='gaga930@users.noreply.github.com'
-git commit -m @"
-Your message here.
-"@
-```
-
-6. **Push**：`git push origin main`（或該 repo 追蹤的分支）。若被 Auto-review／權限擋住，依系統提示請使用者核准後重試同一指令。
-7. 確認：`git status` 乾淨、`git log -1` 為剛推的 commit；回覆使用者 repo 與 Pages 網址。提醒 Pages 通常需 **1–2 分鐘**才會更新。
-
-### 規則與反模式
-
-- **只在使用者要求時**才 commit／push；改稿過程中不要主動上載。
-- **不要**改 `git config`；身分未知時用 `GIT_AUTHOR_*`／`GIT_COMMITTER_*` 環境變數。
-- **不要** force push、`--no-verify`、amend 已推送的 commit（除非使用者明確要求且符合安全條件）。
-- **不要**在 `slides_buider` 根目錄找 git——週報站點的 repo 在 **deck 目錄內**。
-- 推送目標是 GitHub Pages 用的靜態站：只放前端檔（HTML/CSS/JS/assets），不要推整包編輯素材或 Excel 來源（除非使用者指定）。
+5. 若使用者另要求上載：依 **publish-to-git** 執行，並回報 commit／Pages 網址
 
 ## 附加資源
 
 - 視覺 tokens：[design.md](design.md)
 - 章節式最小模板：[template.md](template.md)
+- 上載 Git／Pages：專案 skill **publish-to-git**
