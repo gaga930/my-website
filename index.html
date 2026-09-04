@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DataGov Weekly Report · 2026/09/03</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="brand-bar" aria-hidden="true"></div>
+
+  <header class="report-header">
+    <div class="report-header__text">
+      <h1>DataGov Weekly Report</h1>
+      <p class="support">2026/09/03｜H2 時程、建模進度、時程更新、分層架構、獎金 Table 與 BI 盤點</p>
+    </div>
+    <nav class="toc" aria-label="章節導覽">
+      <a href="#ch-schedule">01 下半年時程</a>
+      <a href="#ch-modeling">02 Ph1 建立ERP數據模型進度現況</a>
+      <a href="#ch-schedule-update">03 時程更新</a>
+      <a href="#ch-architecture">04 數據模型分層架構</a>
+      <a href="#ch-bonus">05 獎金系統必要 Table 盤點</a>
+      <a href="#ch-bi-inventory">06 BI 主題細部盤點</a>
+    </nav>
+  </header>
+
+  <main class="report">
+    <section class="chapter" id="ch-schedule">
+      <header class="chapter__head">
+        <p class="chapter__num">01</p>
+        <div>
+          <h2>
+            <a
+              class="chapter__title-link"
+              href="https://docs.google.com/spreadsheets/d/1YfXO0YVzVNgKiQABtUm9ReZ8utq1VL4MCvY4LdxCxpg/edit?gid=326982137#gid=326982137"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="開啟 Google 試算表"
+            >2026H2 數據治理專案時程規劃</a>
+          </h2>
+          <p class="support">原稿截自 Weekly_Report 第 2 頁；點標題可開試算表</p>
+        </div>
+      </header>
+      <figure class="chapter__asset">
+        <img
+          src="assets/h2-schedule-slide2.png"
+          alt="2026H2 數據治理專案時程規劃甘特圖"
+          width="1920"
+          height="1080"
+        />
+      </figure>
+    </section>
+
+    <section class="chapter" id="ch-modeling">
+      <header class="chapter__head">
+        <p class="chapter__num">02</p>
+        <div>
+          <h2>「Ph1 建立ERP數據模型」進度現況</h2>
+          <p class="support">簽約訂單已完成；出貨與應收已逾目標日｜三階段：設計 → 建模 → 測試｜截至 2026/09/03</p>
+        </div>
+      </header>
+
+      <div class="progress-board">
+        <article class="model-card model-card--done">
+          <div class="model-card__top">
+            <h3>簽約訂單</h3>
+            <span class="model-card__code">dwd_so</span>
+          </div>
+          <p class="model-card__pct">100%</p>
+          <ul class="stage-list" aria-label="階段進度">
+            <li><span>模型設計</span><div class="stage-bar"><i style="--p:1"></i></div></li>
+            <li><span>數據建模</span><div class="stage-bar"><i style="--p:1"></i></div></li>
+            <li><span>數據測試</span><div class="stage-bar"><i style="--p:1"></i></div></li>
+          </ul>
+          <p class="model-card__due"><time datetime="2026-08-07">目標 08/07</time> · 已完成</p>
+        </article>
+
+        <article class="model-card model-card--overdue">
+          <div class="model-card__top">
+            <h3>出貨銷退單</h3>
+            <span class="model-card__code">dwd_deliv_rtn</span>
+          </div>
+          <p class="model-card__pct">83%</p>
+          <ul class="stage-list" aria-label="階段進度">
+            <li><span>模型設計</span><div class="stage-bar"><i style="--p:1"></i></div></li>
+            <li><span>數據建模</span><div class="stage-bar"><i style="--p:1"></i></div></li>
+            <li><span>數據測試</span><div class="stage-bar"><i style="--p:0.5"></i></div></li>
+          </ul>
+          <p class="model-card__due"><time datetime="2026-08-14">目標 08/14</time> · 測試進行中／已逾期</p>
+        </article>
+
+        <article class="model-card model-card--overdue">
+          <div class="model-card__top">
+            <h3>應收帳款單</h3>
+            <span class="model-card__code">dwd_ar</span>
+          </div>
+          <p class="model-card__pct">50%</p>
+          <ul class="stage-list" aria-label="階段進度">
+            <li><span>模型設計</span><div class="stage-bar"><i style="--p:1"></i></div></li>
+            <li><span>數據建模</span><div class="stage-bar"><i style="--p:0.5"></i></div></li>
+            <li><span>數據測試</span><div class="stage-bar"><i style="--p:0"></i></div></li>
+          </ul>
+          <p class="model-card__due"><time datetime="2026-08-28">目標 08/28</time> · 建模進行中／已逾期</p>
+        </article>
+
+        <article class="model-card model-card--active">
+          <div class="model-card__top">
+            <h3>財帳收款單</h3>
+            <span class="model-card__code">dwd_colln_verf</span>
+          </div>
+          <p class="model-card__pct">17%</p>
+          <ul class="stage-list" aria-label="階段進度">
+            <li><span>模型設計</span><div class="stage-bar"><i style="--p:0.5"></i></div></li>
+            <li><span>數據建模</span><div class="stage-bar"><i style="--p:0"></i></div></li>
+            <li><span>數據測試</span><div class="stage-bar"><i style="--p:0"></i></div></li>
+          </ul>
+          <p class="model-card__due"><time datetime="2026-09-11">目標 09/11</time> · 設計進行中</p>
+        </article>
+
+        <article class="model-card model-card--todo">
+          <div class="model-card__top">
+            <h3>管報收入</h3>
+            <span class="model-card__code">dwd_mgmt_rev</span>
+          </div>
+          <p class="model-card__pct">0%</p>
+          <ul class="stage-list" aria-label="階段進度">
+            <li><span>模型設計</span><div class="stage-bar"><i style="--p:0"></i></div></li>
+            <li><span>數據建模</span><div class="stage-bar"><i style="--p:0"></i></div></li>
+            <li><span>數據測試</span><div class="stage-bar"><i style="--p:0"></i></div></li>
+          </ul>
+          <p class="model-card__due"><time datetime="2026-09-18">目標 09/18</time> · 尚未開始</p>
+        </article>
+      </div>
+
+      <footer class="progress-legend">
+        <span><i class="dot dot--done"></i>已完成</span>
+        <span><i class="dot dot--overdue"></i>逾期未完</span>
+        <span><i class="dot dot--active"></i>本週／近期</span>
+        <span><i class="dot dot--todo"></i>未開始</span>
+        <span class="progress-legend__note">整體平均約 50%｜來源：數據建模進度現況.xlsx</span>
+      </footer>
+    </section>
+
+    <!-- 03. 時程更新（Weekly_Report 第 3 頁） -->
+    <section class="chapter" id="ch-schedule-update">
+      <header class="chapter__head">
+        <p class="chapter__num">03</p>
+        <div>
+          <h2>
+            <a
+              class="chapter__title-link"
+              href="https://docs.google.com/spreadsheets/d/1YfXO0YVzVNgKiQABtUm9ReZ8utq1VL4MCvY4LdxCxpg/edit?gid=326982137#gid=326982137"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="開啟 Google 試算表"
+            >2026H2 數據治理專案時程更新</a>
+          </h2>
+          <p class="support">原稿截自 Weekly_Report 第 3 頁；點標題可開試算表</p>
+        </div>
+      </header>
+      <figure class="chapter__asset">
+        <img
+          src="assets/schedule-update-slide3.png"
+          alt="2026H2 數據治理專案時程更新甘特圖"
+          width="1920"
+          height="1080"
+        />
+      </figure>
+    </section>
+
+    <!-- 04. 目前資料分層：方塊＋連線（來源 Canva） -->
+    <section class="chapter" id="ch-architecture">
+      <header class="chapter__head">
+        <p class="chapter__num">04</p>
+        <div>
+          <h2>
+            <a
+              class="chapter__title-link"
+              href="https://canva.link/zqr8strbvmmli4c"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="開啟 Canva：目前資料分層"
+            >目前數據模型分層架構</a>
+          </h2>
+          <p class="support">原稿截自 Canva〈目前資料分層〉｜點標題開原圖</p>
+        </div>
+      </header>
+
+      <div class="layer-legend" aria-label="分層圖例">
+        <div class="layer-legend__item layer--ads"><strong>ADS</strong><span>應用資料服務</span></div>
+        <div class="layer-legend__item layer--dws"><strong>DWS</strong><span>彙總／主題服務</span></div>
+        <div class="layer-legend__item layer--dwd"><strong>DWD／DIM</strong><span>明細事實／維度</span></div>
+        <div class="layer-legend__item layer--ods"><strong>ODS</strong><span>來源落地</span></div>
+      </div>
+
+      <figure class="arch-shot arch-shot--overview">
+        <figcaption class="arch-shot__cap">
+          <span class="arch-shot__tag">總覽</span>
+          <span>全圖一覽｜細節可點標題開 Canva 原圖</span>
+        </figcaption>
+        <div class="arch-shot__scroll">
+          <img
+            src="assets/arch-overview.png"
+            alt="目前資料分層架構全圖總覽"
+            width="3460"
+            height="836"
+          />
+        </div>
+      </figure>
+    </section>
+
+    <!-- 05. 獎金系統必要 Table 盤點 -->
+    <section class="chapter" id="ch-bonus">
+      <header class="chapter__head">
+        <p class="chapter__num">05</p>
+        <div>
+          <h2>獎金系統必要 Table：8 張皆自 84.CRM_NT 遷往數據中台</h2>
+          <p class="support">依主題分類盤點主表；新主表名稱尚未定｜來源：獎金系統必要Table盤點.xlsx</p>
+        </div>
+      </header>
+
+      <div class="bonus-summary" aria-label="盤點摘要">
+        <div class="bonus-stat">
+          <strong>8</strong>
+          <span>必要主表</span>
+        </div>
+        <div class="bonus-stat">
+          <strong>4</strong>
+          <span>主題分類</span>
+        </div>
+        <div class="bonus-stat bonus-stat--from">
+          <strong>84.CRM_NT</strong>
+          <span>原 DB 來源</span>
+        </div>
+        <div class="bonus-stat bonus-stat--to">
+          <strong>數據中台</strong>
+          <span>新 DB 來源</span>
+        </div>
+      </div>
+
+      <div class="bonus-groups">
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">基本資料</p>
+            <p class="bonus-group__count">2 表</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>規劃師基本資料檔</td>
+                  <td><code>MONKR</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>業績異常調整明細檔</td>
+                  <td><code>MONJZ</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">業績計算</p>
+            <p class="bonus-group__count">2 表</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>出貨業績計算檔</td>
+                  <td><code>MONKO</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>沖款業績計算檔</td>
+                  <td><code>MONKO_OOA</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">獎金計算</p>
+            <p class="bonus-group__count">3 表</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>收款兌現檔</td>
+                  <td><code>MONTK</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>出貨單業績計算收款兌現檔</td>
+                  <td><code>MONKW</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>規劃師獎金檔</td>
+                  <td><code>MONKK</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">統計數據</p>
+            <p class="bonus-group__count">2 表</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>業務主管業績統計檔</td>
+                  <td><code>MONLE</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>規劃師業績統計</td>
+                  <td><code>MONME</code></td>
+                  <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 06. BI 主題細部盤點 -->
+    <section class="chapter" id="ch-bi-inventory">
+      <header class="chapter__head">
+        <p class="chapter__num">06</p>
+        <div>
+          <h2>
+            <a
+              class="chapter__title-link"
+              href="https://digiwin0-my.sharepoint.com/:x:/r/personal/chiaca_digiwin_com/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B6cbfef4c-7eb9-482d-a3a1-4097a93f9f94%7D&wdExp=TEAMS-TREATMENT&web=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="開啟 SharePoint：盤點BI-主題細部拆解"
+            >BI 主題細部盤點：簽約／出貨／應收帳款</a>
+          </h2>
+          <p class="support">三張 BI 盤點依主題拆解語意層與主表｜點標題開原檔</p>
+        </div>
+      </header>
+
+      <div class="bonus-summary" aria-label="盤點摘要">
+        <div class="bonus-stat"><strong>18</strong><span>主 Table（原）</span></div>
+        <div class="bonus-stat"><strong>3</strong><span>BI 主題</span></div>
+        <div class="bonus-stat bonus-stat--from"><strong>84.DSCBI</strong><span>主要原 DB</span></div>
+        <div class="bonus-stat bonus-stat--to"><strong>數據中台</strong><span>主要新 DB</span></div>
+      </div>
+
+      <div class="bonus-groups bonus-groups--stack">
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">簽約</p>
+            <p class="bonus-group__count">8 列</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>細節主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>簽約明細 &amp; 統計</td>
+                  <td>產品線簽約行業簽約同期產品簽約統計、明細、同期產品類別簽約統計、同期</td>
+                  <td><span class="is-empty">—</span></td>
+                  <td><span class="is-empty">—</span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>簽約同期比</td>
+                  <td>今年簽約明細</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.訂單</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>今年無訂單出貨明細</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>去年簽約明細</td>
+                  <td><code>TCF.BIPI_ALL</code></td>
+                  <td><span class="migrate"><i>150.TCF</i><span aria-hidden="true">→</span><b>150.TCF</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>去年無訂單出貨明細</td>
+                  <td><code>TCF.OMAB_ALL</code></td>
+                  <td><span class="migrate"><i>150.TCF</i><span aria-hidden="true">→</span><b>150.TCF</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>已簽約未出貨&amp;已出貨未開發票明細表</td>
+                  <td>已出未開明細</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.訂單</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>已簽未出明細</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>已簽約未出貨年月期別明細表(發票收入)及(出貨管帳)</td>
+                  <td>—</td>
+                  <td><code>DSCCJ_BOM_NO_WORK</code></td>
+                  <td><span class="migrate"><i>84.ITAS</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">出貨</p>
+            <p class="bonus-group__count">20 列</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>細節主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>出貨統計&amp;明細</td>
+                  <td>產品類別產品營收統計四大ERP新老客統計</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>出貨統計&amp;明細(發票收入)</td>
+                  <td>產品類別(發票)產品營收統計(發票)業務人員排名</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>訂單出貨每月25日前簽回比率(發票收入)</td>
+                  <td>出貨</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>簽約</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.簽約</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>無訂單出貨</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>預估</td>
+                  <td><code>TT_PIPJPM_PER</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>預算</td>
+                  <td><code>BIPJ_PER</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>產品線實際預算比(發票收入)</td>
+                  <td>實際</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>預算</td>
+                  <td><code>BIPJ_PER</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>業務員簽約出貨統計表(報表作法需要討論，目前執行速度不快)</td>
+                  <td>簽約</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>出貨</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>銷售彙總分析表(報表做法可以再討論)</td>
+                  <td>出貨</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>預算</td>
+                  <td><code>BIPJ_PER</code></td>
+                  <td><span class="is-empty">—</span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>簽約出貨發票狀況表(簽約出貨發票狀況表2雷同)</td>
+                  <td>年發票</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>年銷售</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>年已出未開</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>年簽約</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>年已簽未出</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>年已簽未出明細</td>
+                  <td><code>BIPI</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>年已出未開明細</td>
+                  <td><code>BIPJ</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>數據中台.出貨</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article class="bonus-group">
+          <header class="bonus-group__head">
+            <p class="bonus-group__tag">應收帳款</p>
+            <p class="bonus-group__count">24 列</p>
+          </header>
+          <div class="bonus-table-wrap">
+            <table class="bonus-table">
+              <thead>
+                <tr>
+                  <th>主題</th>
+                  <th>細節主題</th>
+                  <th>主 Table（原）</th>
+                  <th>遷移</th>
+                  <th>主 Table（新）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>收款明細表(嚴謹)</td>
+                  <td>收款</td>
+                  <td><code>BIOOB</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>應收帳款合理率</td>
+                  <td>應收帳款</td>
+                  <td><code>BIAR</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>出貨收入(含稅)</td>
+                  <td><code>OMAB_FILE_2024_OMA</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>條件前一年度(取年度值)</td>
+                  <td><code>AR_IN</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>應收帳款年月期別明細表</td>
+                  <td>—</td>
+                  <td><code>BIARM</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>營收&amp;帳款現況-2025原則</td>
+                  <td>期初帳款</td>
+                  <td><code>BIARM</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>營收預算</td>
+                  <td><code>BIPJ_ACTMJ7_2025_PER</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>實際營收_出貨</td>
+                  <td><code>OMAB_FILE_2024_OMA</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>實際收款</td>
+                  <td><code>BIOOB</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>當月開當月收</td>
+                  <td><code>OMA_FILE_TT</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>承諾收款</td>
+                  <td><code>TT_PIPJPM_PER</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>出貨立帳_出貨</td>
+                  <td><code>OMAB_FILE_2024_OMA</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>出貨立帳_上月出貨</td>
+                  <td><code>OMAB_FILE_2024_OMA</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>實際營收_上月沖款</td>
+                  <td><code>OMAB_FILE_2024_OOA</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>期初帳款_150天以上</td>
+                  <td><code>BIARM</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>150天以上長天期沖款</td>
+                  <td><code>OMA_FILE_TT</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>當期帳款</td>
+                  <td><code>BIARM</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>顧問價值交付物明細表顧問價值交付物明細表(秘書)</td>
+                  <td>—</td>
+                  <td><code>BI_CRMHT</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>立帳當月&amp;一個月&amp;兩個月&amp;五個月&amp;六個月內收款明細表</td>
+                  <td>—</td>
+                  <td><code>OMAB_FILE_2024_OMA</code></td>
+                  <td><span class="migrate"><i>84.DSCBI_2024</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>—</td>
+                  <td><code>OMA_FILE_TT</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>—</td>
+                  <td><code>BIARM_OOB</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>立帳當月&amp;一個月&amp;兩個月&amp;五個月&amp;六個月內收款明細表_產品線&amp;營收類別</td>
+                  <td>—</td>
+                  <td><code>OMA_FILE_TTOMAB_FILE_TTOAG_FILE</code></td>
+                  <td><span class="migrate"><i>84.DSCBI</i><span aria-hidden="true">→</span><b>—</b></span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>立帳60天&amp;150天&amp;180天內收款明細表</td>
+                  <td>—</td>
+                  <td><span class="is-empty">—</span></td>
+                  <td><span class="is-empty">—</span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+                <tr>
+                  <td>立帳30天&amp;60天&amp;90天&amp;120天&amp;150天&amp;180天內收款明細表_產品線&amp;營收類別</td>
+                  <td>—</td>
+                  <td><span class="is-empty">—</span></td>
+                  <td><span class="is-empty">—</span></td>
+                  <td class="is-empty">待定</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="report-footer">DataGov Weekly Report</footer>
+
+  <script src="deck.js"></script>
+</body>
+</html>
