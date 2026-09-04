@@ -328,11 +328,13 @@ body {
 }
 
 .model-gantt {
-  margin-top: 1.15rem;
+  margin-top: 1.25rem;
   background: var(--bg-panel);
   border: 1px solid var(--line);
+  border-top: 3px solid var(--digi-navy);
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 100, 0.05);
 }
 
 .model-gantt__head {
@@ -341,15 +343,15 @@ body {
   align-items: baseline;
   justify-content: space-between;
   gap: 0.35rem 1rem;
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(0, 0, 100, 0.03);
+  background: rgba(0, 0, 100, 0.04);
 }
 
 .model-gantt__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--digi-navy);
 }
@@ -362,21 +364,19 @@ body {
 
 .model-gantt__chart {
   --label-w: 6.5rem;
-  position: relative;
-  padding: 0.55rem 0.85rem 0.85rem;
+  padding: 0.65rem 0.9rem 1rem;
 }
 
 .model-gantt__axis {
   position: relative;
-  height: 1.15rem;
-  margin: 0 0 0.35rem var(--label-w);
+  height: 1.2rem;
+  margin: 0 0 0.4rem var(--label-w);
   border-bottom: 1px solid var(--line);
 }
 
 .model-gantt__axis span {
   position: absolute;
   top: 0;
-  left: calc(var(--d) / var(--gantt-days) * 100%);
   transform: translateX(-50%);
   font-family: var(--font-display);
   font-size: 0.62rem;
@@ -385,28 +385,41 @@ body {
   white-space: nowrap;
 }
 
-.model-gantt__axis span:first-child {
-  transform: translateX(0);
+.model-gantt__axis span.is-start {
+  left: 0;
+  transform: none;
 }
 
-.model-gantt__axis span:last-child {
+.model-gantt__axis span.is-end {
+  left: 100%;
   transform: translateX(-100%);
 }
 
-.model-gantt__today {
+.model-gantt__grid {
+  position: relative;
+}
+
+.model-gantt__today-wrap {
   position: absolute;
-  top: 1.5rem;
-  bottom: 0.85rem;
-  left: calc(var(--label-w) + (100% - var(--label-w) - 1.7rem) * var(--d) / var(--gantt-days));
-  width: 0;
-  border-left: 1.5px dashed var(--digi-blue);
+  top: 0;
+  bottom: 0;
+  left: var(--label-w);
+  right: 0;
   z-index: 2;
   pointer-events: none;
 }
 
+.model-gantt__today {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1.5px dashed var(--digi-blue);
+}
+
 .model-gantt__today span {
   position: absolute;
-  top: -0.05rem;
+  top: 0;
   left: 0.25rem;
   font-family: var(--font-display);
   font-size: 0.58rem;
@@ -418,13 +431,13 @@ body {
 .model-gantt__row {
   display: grid;
   grid-template-columns: var(--label-w) 1fr;
-  gap: 0.45rem;
+  gap: 0.5rem;
   align-items: center;
-  min-height: 2.1rem;
+  min-height: 2.25rem;
 }
 
 .model-gantt__label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--digi-navy);
   line-height: 1.25;
@@ -432,62 +445,54 @@ body {
 
 .model-gantt__track {
   position: relative;
-  height: 1.35rem;
+  height: 1.55rem;
   border-radius: 3px;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent calc(100% / 8 - 1px),
-      rgba(0, 0, 100, 0.05) calc(100% / 8 - 1px),
-      rgba(0, 0, 100, 0.05) calc(100% / 8)
-    );
+  background: rgba(0, 0, 100, 0.04);
 }
 
 .model-gantt__bar {
   position: absolute;
-  top: 0.15rem;
-  bottom: 0.15rem;
-  left: calc(var(--s) / var(--gantt-days) * 100%);
-  width: calc((var(--e) - var(--s)) / var(--gantt-days) * 100%);
+  top: 0.2rem;
+  bottom: 0.2rem;
   display: flex;
   align-items: center;
   padding: 0 0.35rem;
   border-radius: 3px;
-  min-width: 0.4rem;
+  min-width: 0.45rem;
   overflow: hidden;
+  z-index: 1;
 }
 
 .model-gantt__bar span {
   font-family: var(--font-display);
-  font-size: 0.58rem;
-  font-weight: 600;
+  font-size: 0.6rem;
+  font-weight: 700;
   white-space: nowrap;
   line-height: 1;
 }
 
 .model-gantt__bar--done {
-  background: rgba(20, 230, 155, 0.35);
-  border: 1px solid var(--digi-mint);
-  color: #0a6b4f;
+  background: #14e69b;
+  border: 1px solid #0a8a66;
+  color: #063d2f;
 }
 
 .model-gantt__bar--overdue {
-  background: rgba(255, 90, 110, 0.28);
-  border: 1px solid var(--digi-coral);
-  color: #8b1e2d;
+  background: #ff8a98;
+  border: 1px solid #c43b4c;
+  color: #5c1520;
 }
 
 .model-gantt__bar--active {
-  background: rgba(0, 90, 255, 0.22);
-  border: 1px solid var(--digi-blue);
-  color: var(--digi-navy);
+  background: #5c9bff;
+  border: 1px solid #005aff;
+  color: #001a4d;
 }
 
 .model-gantt__bar--todo {
-  background: rgba(154, 168, 184, 0.35);
-  border: 1px solid #9aa8b8;
-  color: #4a5568;
+  background: #c5ced8;
+  border: 1px solid #7a8798;
+  color: #2f3744;
 }
 
 /* —— 03 分層架構：方塊＋連線 —— */

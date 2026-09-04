@@ -147,56 +147,60 @@
 
       <div class="model-gantt" aria-label="Ph1 模型時程甘特圖">
         <div class="model-gantt__head">
-          <h3 class="model-gantt__title">時程甘特圖</h3>
-          <p class="model-gantt__note">實際開工日 → 目標完成日｜區間 2026/07/28–09/18｜虛線為報告日 09/03</p>
+          <h3 class="model-gantt__title">時程甘特圖｜實際開工 → 目標完成</h3>
+          <p class="model-gantt__note">區間 2026/07/28–09/18｜藍虛線＝報告日 09/03</p>
         </div>
-        <div class="model-gantt__chart" style="--gantt-days:52">
+        <div class="model-gantt__chart">
           <div class="model-gantt__axis" aria-hidden="true">
-            <span style="--d:0">07/28</span>
-            <span style="--d:4">08/01</span>
-            <span style="--d:18">08/15</span>
-            <span style="--d:35">09/01</span>
-            <span style="--d:52">09/18</span>
+            <span class="is-start">07/28</span>
+            <span style="left:7.7%">08/01</span>
+            <span style="left:34.6%">08/15</span>
+            <span style="left:67.3%">09/01</span>
+            <span class="is-end">09/18</span>
           </div>
-          <div class="model-gantt__today" style="--d:37" title="報告日 2026/09/03"><span>09/03</span></div>
+          <div class="model-gantt__grid">
+            <div class="model-gantt__today-wrap" aria-hidden="true">
+              <div class="model-gantt__today" style="left:71.2%"><span>09/03</span></div>
+            </div>
 
-          <div class="model-gantt__row">
-            <div class="model-gantt__label">簽約訂單</div>
-            <div class="model-gantt__track">
-              <div class="model-gantt__bar model-gantt__bar--done" style="--s:0;--e:10" title="07/28 → 08/07">
-                <span>07/28–08/07</span>
+            <div class="model-gantt__row">
+              <div class="model-gantt__label">簽約訂單</div>
+              <div class="model-gantt__track">
+                <div class="model-gantt__bar model-gantt__bar--done" style="left:0%;width:19.2%" title="07/28 → 08/07">
+                  <span>07/28–08/07</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="model-gantt__row">
-            <div class="model-gantt__label">出貨銷退單</div>
-            <div class="model-gantt__track">
-              <div class="model-gantt__bar model-gantt__bar--overdue" style="--s:13;--e:24" title="08/10 → 08/21">
-                <span>08/10–08/21</span>
+            <div class="model-gantt__row">
+              <div class="model-gantt__label">出貨銷退單</div>
+              <div class="model-gantt__track">
+                <div class="model-gantt__bar model-gantt__bar--overdue" style="left:25%;width:21.2%" title="08/10 → 08/21">
+                  <span>08/10–08/21</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="model-gantt__row">
-            <div class="model-gantt__label">應收帳款單</div>
-            <div class="model-gantt__track">
-              <div class="model-gantt__bar model-gantt__bar--active" style="--s:27;--e:39" title="08/24 → 09/05">
-                <span>08/24–09/05</span>
+            <div class="model-gantt__row">
+              <div class="model-gantt__label">應收帳款單</div>
+              <div class="model-gantt__track">
+                <div class="model-gantt__bar model-gantt__bar--active" style="left:51.9%;width:23.1%" title="08/24 → 09/05">
+                  <span>08/24–09/05</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="model-gantt__row">
-            <div class="model-gantt__label">財帳收款單</div>
-            <div class="model-gantt__track">
-              <div class="model-gantt__bar model-gantt__bar--active" style="--s:41;--e:45" title="09/07 → 09/11">
-                <span>09/07–09/11</span>
+            <div class="model-gantt__row">
+              <div class="model-gantt__label">財帳收款單</div>
+              <div class="model-gantt__track">
+                <div class="model-gantt__bar model-gantt__bar--active" style="left:78.8%;width:7.7%" title="09/07 → 09/11">
+                  <span>09/07–11</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="model-gantt__row">
-            <div class="model-gantt__label">管報收入</div>
-            <div class="model-gantt__track">
-              <div class="model-gantt__bar model-gantt__bar--todo" style="--s:48;--e:52" title="09/14 → 09/18">
-                <span>09/14–09/18</span>
+            <div class="model-gantt__row">
+              <div class="model-gantt__label">管報收入</div>
+              <div class="model-gantt__track">
+                <div class="model-gantt__bar model-gantt__bar--todo" style="left:92.3%;width:7.7%" title="09/14 → 09/18">
+                  <span>09/14–18</span>
+                </div>
               </div>
             </div>
           </div>
