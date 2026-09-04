@@ -15,50 +15,23 @@
   <header class="report-header">
     <div class="report-header__text">
       <h1>DataGov Weekly Report</h1>
-      <p class="support">2026/09/03｜H2 時程、建模進度、時程更新、獎金 Table、BI 盤點與分層架構</p>
+      <p class="support">2026/09/03｜建模進度、時程更新、獎金 Table、BI 盤點、分層架構｜附：2026H2 原時程</p>
     </div>
     <nav class="toc" aria-label="章節導覽">
-      <a href="#ch-schedule">01 下半年時程</a>
-      <a href="#ch-modeling">02 Ph1 建立ERP數據模型進度現況</a>
-      <a href="#ch-schedule-update">03 時程更新</a>
-      <a href="#ch-bonus">04 Ph4.0 獎金數據模型建構</a>
-      <a href="#ch-bi-inventory">05 Ph3 BI服務改接數據模型-數據報表與來源盤點</a>
-      <a href="#ch-architecture">06 數據模型分層架構</a>
+      <a href="#ch-modeling">01 Ph1 建立ERP數據模型進度現況</a>
+      <a href="#ch-schedule-update">02 時程更新</a>
+      <a href="#ch-bonus">03 Ph4.0 獎金數據模型建構</a>
+      <a href="#ch-bi-inventory">04 Ph3 BI服務改接數據模型-數據報表與來源盤點</a>
+      <a href="#ch-architecture">05 數據模型分層架構</a>
+      <a href="#ch-schedule" class="toc__appendix">附件</a>
     </nav>
   </header>
 
   <main class="report">
-    <!-- 01 -->
-    <section class="chapter" id="ch-schedule">
-      <header class="chapter__head">
-        <p class="chapter__num">01</p>
-        <div>
-          <h2>
-            <a
-              class="chapter__title-link"
-              href="https://docs.google.com/spreadsheets/d/1YfXO0YVzVNgKiQABtUm9ReZ8utq1VL4MCvY4LdxCxpg/edit?gid=326982137#gid=326982137"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="開啟 Google 試算表"
-            >2026H2 數據治理專案時程規劃</a>
-          </h2>
-          <p class="support">原稿截自 Weekly_Report 第 2 頁；點標題可開試算表</p>
-        </div>
-      </header>
-      <figure class="chapter__asset">
-        <img
-          src="assets/h2-schedule-slide2.png"
-          alt="2026H2 數據治理專案時程規劃甘特圖"
-          width="1920"
-          height="1080"
-        />
-      </figure>
-    </section>
-
-    <!-- 02 -->
+    <!-- 01. Ph1 建立ERP數據模型進度現況 -->
     <section class="chapter" id="ch-modeling">
       <header class="chapter__head">
-        <p class="chapter__num">02</p>
+        <p class="chapter__num">01</p>
         <div>
           <h2>「Ph1 建立ERP數據模型」進度現況</h2>
           <p class="support">簽約訂單已完成；出貨已逾目標日｜三階段：設計 → 建模 → 測試｜截至 2026/09/03</p>
@@ -203,10 +176,10 @@
       </div>
     </section>
 
-    <!-- 03 -->
+    <!-- 02. 時程更新 -->
     <section class="chapter" id="ch-schedule-update">
       <header class="chapter__head">
-        <p class="chapter__num">03</p>
+        <p class="chapter__num">02</p>
         <div>
           <h2>
             <a
@@ -230,10 +203,10 @@
       </figure>
     </section>
 
-    <!-- 04. Ph4.0 獎金數據模型建構 -->
+    <!-- 03. Ph4.0 獎金數據模型建構 -->
     <section class="chapter" id="ch-bonus">
       <header class="chapter__head">
-        <p class="chapter__num">04</p>
+        <p class="chapter__num">03</p>
         <div>
           <h2>
             <a
@@ -244,7 +217,7 @@
               title="開啟 SharePoint 原檔"
             >Ph4.0 獎金數據模型建構</a>
           </h2>
-          <p class="support">必要主表 9 張皆自 84.CRM_NT 遷往數據中台；新主表名稱尚未定｜點標題開原檔</p>
+          <p class="support">必要主表 9 張皆自 84.CRM_NT 遷往數據中台；依時程安排分三波｜點標題開原檔</p>
         </div>
       </header>
 
@@ -271,7 +244,7 @@
         <article class="bonus-group">
           <header class="bonus-group__head">
             <p class="bonus-group__tag">基本資料</p>
-            <p class="bonus-group__count">2 表</p>
+            <p class="bonus-group__count">2 表 · 9/21–9/25</p>
           </header>
           <div class="bonus-table-wrap">
             <table class="bonus-table">
@@ -280,7 +253,7 @@
                   <th>主題</th>
                   <th>主 Table（原）</th>
                   <th>遷移</th>
-                  <th>主 Table（新）</th>
+                  <th>時程</th>
                 </tr>
               </thead>
               <tbody>
@@ -288,13 +261,13 @@
                   <td>規劃師基本資料檔</td>
                   <td><code>MONKR</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>9/21–9/25</td>
                 </tr>
                 <tr>
                   <td>業績異常調整明細檔</td>
                   <td><code>MONJZ</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>9/21–9/25</td>
                 </tr>
               </tbody>
             </table>
@@ -304,7 +277,7 @@
         <article class="bonus-group">
           <header class="bonus-group__head">
             <p class="bonus-group__tag">業績計算</p>
-            <p class="bonus-group__count">2 表</p>
+            <p class="bonus-group__count">2 表 · 9/21–9/25</p>
           </header>
           <div class="bonus-table-wrap">
             <table class="bonus-table">
@@ -313,7 +286,7 @@
                   <th>主題</th>
                   <th>主 Table（原）</th>
                   <th>遷移</th>
-                  <th>主 Table（新）</th>
+                  <th>時程</th>
                 </tr>
               </thead>
               <tbody>
@@ -321,13 +294,13 @@
                   <td>出貨業績計算檔</td>
                   <td><code>MONKO</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>9/21–9/25</td>
                 </tr>
                 <tr>
                   <td>沖款業績計算檔</td>
                   <td><code>MONKO_OOA</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>9/21–9/25</td>
                 </tr>
               </tbody>
             </table>
@@ -337,7 +310,7 @@
         <article class="bonus-group">
           <header class="bonus-group__head">
             <p class="bonus-group__tag">獎金計算</p>
-            <p class="bonus-group__count">3 表</p>
+            <p class="bonus-group__count">3 表 · 10/5–10/9</p>
           </header>
           <div class="bonus-table-wrap">
             <table class="bonus-table">
@@ -346,7 +319,7 @@
                   <th>主題</th>
                   <th>主 Table（原）</th>
                   <th>遷移</th>
-                  <th>主 Table（新）</th>
+                  <th>時程</th>
                 </tr>
               </thead>
               <tbody>
@@ -354,19 +327,19 @@
                   <td>收款兌現檔</td>
                   <td><code>MONTK</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>10/5–10/9</td>
                 </tr>
                 <tr>
                   <td>出貨單業績計算收款兌現檔</td>
                   <td><code>MONKW</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>10/5–10/9</td>
                 </tr>
                 <tr>
                   <td>規劃師獎金檔</td>
                   <td><code>MONKK</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>10/5–10/9</td>
                 </tr>
               </tbody>
             </table>
@@ -376,7 +349,7 @@
         <article class="bonus-group">
           <header class="bonus-group__head">
             <p class="bonus-group__tag">統計數據</p>
-            <p class="bonus-group__count">2 表</p>
+            <p class="bonus-group__count">2 表 · 10/12–10/16</p>
           </header>
           <div class="bonus-table-wrap">
             <table class="bonus-table">
@@ -385,7 +358,7 @@
                   <th>主題</th>
                   <th>主 Table（原）</th>
                   <th>遷移</th>
-                  <th>主 Table（新）</th>
+                  <th>時程</th>
                 </tr>
               </thead>
               <tbody>
@@ -393,25 +366,88 @@
                   <td>業務主管業績統計檔</td>
                   <td><code>MONLE</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>10/12–10/16</td>
                 </tr>
                 <tr>
                   <td>規劃師業績統計</td>
                   <td><code>MONME</code></td>
                   <td><span class="migrate"><i>84.CRM_NT</i><span aria-hidden="true">→</span><b>數據中台</b></span></td>
-                  <td class="is-empty">待定</td>
+                  <td>10/12–10/16</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </article>
       </div>
+
+      <div class="model-gantt" aria-label="獎金主表時程甘特圖">
+        <div class="model-gantt__head">
+          <h3 class="model-gantt__title">時程甘特圖｜時程安排</h3>
+          <p class="model-gantt__note">來源：獎金系統必要Table盤點.xlsx｜區間 2026/09/21–10/16｜三波施工</p>
+        </div>
+        <div class="model-gantt__body">
+          <svg class="model-gantt__svg" viewBox="0 0 1000 400" role="img" aria-label="九張獎金必要主表時程甘特圖">
+            <line x1="210" y1="36" x2="980" y2="36" stroke="#d5deea" stroke-width="1"/>
+            <text x="210" y="24" class="gantt-axis">09/21</text>
+            <text x="417" y="24" class="gantt-axis" text-anchor="middle">09/28</text>
+            <text x="624" y="24" class="gantt-axis" text-anchor="middle">10/05</text>
+            <text x="832" y="24" class="gantt-axis" text-anchor="middle">10/12</text>
+            <text x="980" y="24" class="gantt-axis" text-anchor="end">10/16</text>
+
+            <rect x="210" y="48" width="770" height="34" fill="rgba(0,0,100,0.03)"/>
+            <rect x="210" y="82" width="770" height="34" fill="rgba(0,0,100,0.015)"/>
+            <rect x="210" y="116" width="770" height="34" fill="rgba(0,0,100,0.03)"/>
+            <rect x="210" y="150" width="770" height="34" fill="rgba(0,0,100,0.015)"/>
+            <rect x="210" y="184" width="770" height="34" fill="rgba(0,0,100,0.03)"/>
+            <rect x="210" y="218" width="770" height="34" fill="rgba(0,0,100,0.015)"/>
+            <rect x="210" y="252" width="770" height="34" fill="rgba(0,0,100,0.03)"/>
+            <rect x="210" y="286" width="770" height="34" fill="rgba(0,0,100,0.015)"/>
+            <rect x="210" y="320" width="770" height="34" fill="rgba(0,0,100,0.03)"/>
+
+            <text x="8" y="70" class="gantt-label">MONKR 規劃師基本</text>
+            <text x="8" y="104" class="gantt-label">MONJZ 業績異常</text>
+            <text x="8" y="138" class="gantt-label">MONKO 出貨業績</text>
+            <text x="8" y="172" class="gantt-label">MONKO_OOA 沖款業績</text>
+            <text x="8" y="206" class="gantt-label">MONTK 收款兌現</text>
+            <text x="8" y="240" class="gantt-label">MONKW 出貨收款兌現</text>
+            <text x="8" y="274" class="gantt-label">MONKK 規劃師獎金</text>
+            <text x="8" y="308" class="gantt-label">MONLE 主管業績統計</text>
+            <text x="8" y="342" class="gantt-label">MONME 規劃師業績統計</text>
+
+            <!-- wave1 9/21-9/25: days 0-5 of 26 -->
+            <rect x="210" y="56" width="148.1" height="18" rx="3" fill="#5c9bff" stroke="#005aff"/>
+            <text x="218" y="69" class="gantt-bar-text">9/21–9/25</text>
+            <rect x="210" y="90" width="148.1" height="18" rx="3" fill="#5c9bff" stroke="#005aff"/>
+            <text x="218" y="103" class="gantt-bar-text">9/21–9/25</text>
+            <rect x="210" y="124" width="148.1" height="18" rx="3" fill="#5c9bff" stroke="#005aff"/>
+            <text x="218" y="137" class="gantt-bar-text">9/21–9/25</text>
+            <rect x="210" y="158" width="148.1" height="18" rx="3" fill="#5c9bff" stroke="#005aff"/>
+            <text x="218" y="171" class="gantt-bar-text">9/21–9/25</text>
+
+            <!-- wave2 10/5-10/9: days 14-19 -->
+            <rect x="624.2" y="192" width="148.1" height="18" rx="3" fill="#14e69b" stroke="#0a8a66"/>
+            <text x="632" y="205" class="gantt-bar-text">10/5–10/9</text>
+            <rect x="624.2" y="226" width="148.1" height="18" rx="3" fill="#14e69b" stroke="#0a8a66"/>
+            <text x="632" y="239" class="gantt-bar-text">10/5–10/9</text>
+            <rect x="624.2" y="260" width="148.1" height="18" rx="3" fill="#14e69b" stroke="#0a8a66"/>
+            <text x="632" y="273" class="gantt-bar-text">10/5–10/9</text>
+
+            <!-- wave3 10/12-10/16: days 21-26 -->
+            <rect x="831.3" y="294" width="148.1" height="18" rx="3" fill="#c5ced8" stroke="#7a8798"/>
+            <text x="839" y="307" class="gantt-bar-text">10/12–16</text>
+            <rect x="831.3" y="328" width="148.1" height="18" rx="3" fill="#c5ced8" stroke="#7a8798"/>
+            <text x="839" y="341" class="gantt-bar-text">10/12–16</text>
+
+            <text x="210" y="380" class="gantt-axis">藍＝基本／業績｜綠＝獎金計算｜灰＝統計數據</text>
+          </svg>
+        </div>
+      </div>
     </section>
 
-    <!-- 05. Ph3 BI服務改接數據模型-數據報表與來源盤點 -->
+    <!-- 04. Ph3 BI服務改接數據模型 -->
     <section class="chapter" id="ch-bi-inventory">
       <header class="chapter__head">
-        <p class="chapter__num">05</p>
+        <p class="chapter__num">04</p>
         <div>
           <h2>
             <a
@@ -864,12 +900,10 @@
       </div>
     </section>
 
-  
-
-    <!-- 06. 目前資料分層（來源 Canva） -->
+    <!-- 05. 目前資料分層（來源 Canva） -->
     <section class="chapter" id="ch-architecture">
       <header class="chapter__head">
-        <p class="chapter__num">06</p>
+        <p class="chapter__num">05</p>
         <div>
           <h2>
             <a
@@ -904,6 +938,39 @@
             height="836"
           />
         </div>
+      </figure>
+    </section>
+
+    <div class="appendix-divider" role="separator" aria-label="以下為附件">
+      <span class="appendix-divider__line" aria-hidden="true"></span>
+      <span class="appendix-divider__label">附件</span>
+      <span class="appendix-divider__line" aria-hidden="true"></span>
+    </div>
+
+    <!-- 附. 2026H2數據治理專案原時程規劃 -->
+    <section class="chapter chapter--appendix" id="ch-schedule">
+      <header class="chapter__head">
+        <p class="chapter__num">附</p>
+        <div>
+          <h2>
+            <a
+              class="chapter__title-link"
+              href="https://docs.google.com/spreadsheets/d/1YfXO0YVzVNgKiQABtUm9ReZ8utq1VL4MCvY4LdxCxpg/edit?gid=326982137#gid=326982137"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="開啟 Google 試算表"
+            >2026H2數據治理專案原時程規劃</a>
+          </h2>
+          <p class="support">原稿截自 Weekly_Report 第 2 頁；點標題可開試算表</p>
+        </div>
+      </header>
+      <figure class="chapter__asset">
+        <img
+          src="assets/h2-schedule-slide2.png"
+          alt="2026H2數據治理專案原時程規劃甘特圖"
+          width="1920"
+          height="1080"
+        />
       </figure>
     </section>
 

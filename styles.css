@@ -117,6 +117,19 @@ body {
   outline: none;
 }
 
+.toc a.toc__appendix {
+  border-color: var(--digi-navy);
+  background: rgba(0, 0, 100, 0.06);
+}
+
+.toc a.toc__appendix.is-active,
+.toc a.toc__appendix:hover,
+.toc a.toc__appendix:focus-visible {
+  background: var(--digi-navy);
+  border-color: var(--digi-navy);
+  color: #fff;
+}
+
 .report {
   max-width: var(--max);
   margin: 0 auto;
@@ -131,6 +144,61 @@ body {
 
 .chapter:last-of-type {
   border-bottom: none;
+}
+
+.appendix-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100vw;
+  margin: 2.25rem 0 0.75rem;
+  margin-left: calc(50% - 50vw);
+  padding: 2rem var(--page-pad);
+  box-sizing: border-box;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 0, 100, 0.05) 22%,
+    rgba(0, 0, 100, 0.05) 78%,
+    transparent
+  );
+}
+
+.appendix-divider__line {
+  flex: 1;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--digi-navy) 8%,
+    var(--digi-navy) 92%,
+    transparent
+  );
+  opacity: 0.4;
+}
+
+.appendix-divider__label {
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--digi-navy);
+  padding: 0.7rem 1.6rem;
+  border-radius: 3px;
+}
+
+.chapter--appendix {
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: none;
+}
+
+.chapter--appendix .chapter__num {
+  color: var(--digi-navy);
+  font-size: clamp(1.5rem, 2.6vw, 1.9rem);
 }
 
 .chapter__head {
