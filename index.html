@@ -15,19 +15,20 @@
   <header class="report-header">
     <div class="report-header__text">
       <h1>DataGov Weekly Report</h1>
-      <p class="support">2026/09/03｜H2 時程、建模進度、時程更新、分層架構、獎金 Table 與 BI 盤點</p>
+      <p class="support">2026/09/03｜H2 時程、建模進度、時程更新、獎金 Table、BI 盤點與分層架構</p>
     </div>
     <nav class="toc" aria-label="章節導覽">
       <a href="#ch-schedule">01 下半年時程</a>
       <a href="#ch-modeling">02 Ph1 建立ERP數據模型進度現況</a>
       <a href="#ch-schedule-update">03 時程更新</a>
-      <a href="#ch-architecture">04 數據模型分層架構</a>
-      <a href="#ch-bonus">05 獎金系統必要 Table 盤點</a>
-      <a href="#ch-bi-inventory">06 BI 主題細部盤點</a>
+      <a href="#ch-bonus">04 Ph4.0 獎金數據模型建構</a>
+      <a href="#ch-bi-inventory">05 Ph3 BI服務改接數據模型-數據報表與來源盤點</a>
+      <a href="#ch-architecture">06 數據模型分層架構</a>
     </nav>
   </header>
 
   <main class="report">
+    <!-- 01 -->
     <section class="chapter" id="ch-schedule">
       <header class="chapter__head">
         <p class="chapter__num">01</p>
@@ -54,12 +55,13 @@
       </figure>
     </section>
 
+    <!-- 02 -->
     <section class="chapter" id="ch-modeling">
       <header class="chapter__head">
         <p class="chapter__num">02</p>
         <div>
           <h2>「Ph1 建立ERP數據模型」進度現況</h2>
-          <p class="support">簽約訂單已完成；出貨與應收已逾目標日｜三階段：設計 → 建模 → 測試｜截至 2026/09/03</p>
+          <p class="support">簽約訂單已完成；出貨已逾目標日｜三階段：設計 → 建模 → 測試｜截至 2026/09/03</p>
         </div>
       </header>
 
@@ -75,7 +77,7 @@
             <li><span>數據建模</span><div class="stage-bar"><i style="--p:1"></i></div></li>
             <li><span>數據測試</span><div class="stage-bar"><i style="--p:1"></i></div></li>
           </ul>
-          <p class="model-card__due"><time datetime="2026-08-07">目標 08/07</time> · 已完成</p>
+          <p class="model-card__due"><time datetime="2026-07-28">07/28</time>→<time datetime="2026-08-07">08/07</time> · 已完成</p>
         </article>
 
         <article class="model-card model-card--overdue">
@@ -89,10 +91,10 @@
             <li><span>數據建模</span><div class="stage-bar"><i style="--p:1"></i></div></li>
             <li><span>數據測試</span><div class="stage-bar"><i style="--p:0.5"></i></div></li>
           </ul>
-          <p class="model-card__due"><time datetime="2026-08-14">目標 08/14</time> · 測試進行中／已逾期</p>
+          <p class="model-card__due"><time datetime="2026-08-10">08/10</time>→<time datetime="2026-08-21">08/21</time> · 測試進行中／已逾期</p>
         </article>
 
-        <article class="model-card model-card--overdue">
+        <article class="model-card model-card--active">
           <div class="model-card__top">
             <h3>應收帳款單</h3>
             <span class="model-card__code">dwd_ar</span>
@@ -103,7 +105,7 @@
             <li><span>數據建模</span><div class="stage-bar"><i style="--p:0.5"></i></div></li>
             <li><span>數據測試</span><div class="stage-bar"><i style="--p:0"></i></div></li>
           </ul>
-          <p class="model-card__due"><time datetime="2026-08-28">目標 08/28</time> · 建模進行中／已逾期</p>
+          <p class="model-card__due"><time datetime="2026-08-24">08/24</time>→<time datetime="2026-09-05">09/05</time> · 建模進行中</p>
         </article>
 
         <article class="model-card model-card--active">
@@ -117,7 +119,7 @@
             <li><span>數據建模</span><div class="stage-bar"><i style="--p:0"></i></div></li>
             <li><span>數據測試</span><div class="stage-bar"><i style="--p:0"></i></div></li>
           </ul>
-          <p class="model-card__due"><time datetime="2026-09-11">目標 09/11</time> · 設計進行中</p>
+          <p class="model-card__due"><time datetime="2026-09-07">09/07</time>→<time datetime="2026-09-11">09/11</time> · 設計進行中</p>
         </article>
 
         <article class="model-card model-card--todo">
@@ -131,7 +133,7 @@
             <li><span>數據建模</span><div class="stage-bar"><i style="--p:0"></i></div></li>
             <li><span>數據測試</span><div class="stage-bar"><i style="--p:0"></i></div></li>
           </ul>
-          <p class="model-card__due"><time datetime="2026-09-18">目標 09/18</time> · 尚未開始</p>
+          <p class="model-card__due"><time datetime="2026-09-14">09/14</time>→<time datetime="2026-09-18">09/18</time> · 尚未開始</p>
         </article>
       </div>
 
@@ -142,9 +144,67 @@
         <span><i class="dot dot--todo"></i>未開始</span>
         <span class="progress-legend__note">整體平均約 50%｜來源：數據建模進度現況.xlsx</span>
       </footer>
+
+      <div class="model-gantt" aria-label="Ph1 模型時程甘特圖">
+        <div class="model-gantt__head">
+          <h3 class="model-gantt__title">時程甘特圖</h3>
+          <p class="model-gantt__note">實際開工日 → 目標完成日｜區間 2026/07/28–09/18｜虛線為報告日 09/03</p>
+        </div>
+        <div class="model-gantt__chart" style="--gantt-days:52">
+          <div class="model-gantt__axis" aria-hidden="true">
+            <span style="--d:0">07/28</span>
+            <span style="--d:4">08/01</span>
+            <span style="--d:18">08/15</span>
+            <span style="--d:35">09/01</span>
+            <span style="--d:52">09/18</span>
+          </div>
+          <div class="model-gantt__today" style="--d:37" title="報告日 2026/09/03"><span>09/03</span></div>
+
+          <div class="model-gantt__row">
+            <div class="model-gantt__label">簽約訂單</div>
+            <div class="model-gantt__track">
+              <div class="model-gantt__bar model-gantt__bar--done" style="--s:0;--e:10" title="07/28 → 08/07">
+                <span>07/28–08/07</span>
+              </div>
+            </div>
+          </div>
+          <div class="model-gantt__row">
+            <div class="model-gantt__label">出貨銷退單</div>
+            <div class="model-gantt__track">
+              <div class="model-gantt__bar model-gantt__bar--overdue" style="--s:13;--e:24" title="08/10 → 08/21">
+                <span>08/10–08/21</span>
+              </div>
+            </div>
+          </div>
+          <div class="model-gantt__row">
+            <div class="model-gantt__label">應收帳款單</div>
+            <div class="model-gantt__track">
+              <div class="model-gantt__bar model-gantt__bar--active" style="--s:27;--e:39" title="08/24 → 09/05">
+                <span>08/24–09/05</span>
+              </div>
+            </div>
+          </div>
+          <div class="model-gantt__row">
+            <div class="model-gantt__label">財帳收款單</div>
+            <div class="model-gantt__track">
+              <div class="model-gantt__bar model-gantt__bar--active" style="--s:41;--e:45" title="09/07 → 09/11">
+                <span>09/07–09/11</span>
+              </div>
+            </div>
+          </div>
+          <div class="model-gantt__row">
+            <div class="model-gantt__label">管報收入</div>
+            <div class="model-gantt__track">
+              <div class="model-gantt__bar model-gantt__bar--todo" style="--s:48;--e:52" title="09/14 → 09/18">
+                <span>09/14–09/18</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- 03. 時程更新（Weekly_Report 第 3 頁） -->
+    <!-- 03 -->
     <section class="chapter" id="ch-schedule-update">
       <header class="chapter__head">
         <p class="chapter__num">03</p>
@@ -171,60 +231,27 @@
       </figure>
     </section>
 
-    <!-- 04. 目前資料分層：方塊＋連線（來源 Canva） -->
-    <section class="chapter" id="ch-architecture">
+    <!-- 04. Ph4.0 獎金數據模型建構 -->
+    <section class="chapter" id="ch-bonus">
       <header class="chapter__head">
         <p class="chapter__num">04</p>
         <div>
           <h2>
             <a
               class="chapter__title-link"
-              href="https://canva.link/zqr8strbvmmli4c"
+              href="https://digiwin0-my.sharepoint.com/:x:/r/personal/chiaca_digiwin_com/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B6cbfef4c-7eb9-482d-a3a1-4097a93f9f94%7D&wdExp=TEAMS-TREATMENT&web=1"
               target="_blank"
               rel="noopener noreferrer"
-              title="開啟 Canva：目前資料分層"
-            >目前數據模型分層架構</a>
+              title="開啟 SharePoint 原檔"
+            >Ph4.0 獎金數據模型建構</a>
           </h2>
-          <p class="support">原稿截自 Canva〈目前資料分層〉｜點標題開原圖</p>
-        </div>
-      </header>
-
-      <div class="layer-legend" aria-label="分層圖例">
-        <div class="layer-legend__item layer--ads"><strong>ADS</strong><span>應用資料服務</span></div>
-        <div class="layer-legend__item layer--dws"><strong>DWS</strong><span>彙總／主題服務</span></div>
-        <div class="layer-legend__item layer--dwd"><strong>DWD／DIM</strong><span>明細事實／維度</span></div>
-        <div class="layer-legend__item layer--ods"><strong>ODS</strong><span>來源落地</span></div>
-      </div>
-
-      <figure class="arch-shot arch-shot--overview">
-        <figcaption class="arch-shot__cap">
-          <span class="arch-shot__tag">總覽</span>
-          <span>全圖一覽｜細節可點標題開 Canva 原圖</span>
-        </figcaption>
-        <div class="arch-shot__scroll">
-          <img
-            src="assets/arch-overview.png"
-            alt="目前資料分層架構全圖總覽"
-            width="3460"
-            height="836"
-          />
-        </div>
-      </figure>
-    </section>
-
-    <!-- 05. 獎金系統必要 Table 盤點 -->
-    <section class="chapter" id="ch-bonus">
-      <header class="chapter__head">
-        <p class="chapter__num">05</p>
-        <div>
-          <h2>獎金系統必要 Table：8 張皆自 84.CRM_NT 遷往數據中台</h2>
-          <p class="support">依主題分類盤點主表；新主表名稱尚未定｜來源：獎金系統必要Table盤點.xlsx</p>
+          <p class="support">必要主表 9 張皆自 84.CRM_NT 遷往數據中台；新主表名稱尚未定｜點標題開原檔</p>
         </div>
       </header>
 
       <div class="bonus-summary" aria-label="盤點摘要">
         <div class="bonus-stat">
-          <strong>8</strong>
+          <strong>9</strong>
           <span>必要主表</span>
         </div>
         <div class="bonus-stat">
@@ -382,19 +409,19 @@
       </div>
     </section>
 
-    <!-- 06. BI 主題細部盤點 -->
+    <!-- 05. Ph3 BI服務改接數據模型-數據報表與來源盤點 -->
     <section class="chapter" id="ch-bi-inventory">
       <header class="chapter__head">
-        <p class="chapter__num">06</p>
+        <p class="chapter__num">05</p>
         <div>
           <h2>
             <a
               class="chapter__title-link"
-              href="https://digiwin0-my.sharepoint.com/:x:/r/personal/chiaca_digiwin_com/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B6cbfef4c-7eb9-482d-a3a1-4097a93f9f94%7D&wdExp=TEAMS-TREATMENT&web=1"
+              href="https://digiwin0-my.sharepoint.com/:x:/g/personal/chiaca_digiwin_com/IQBM779suX4tSKOhQJepP5-UAQsFJlabcaXieWCs7HieNwY?e=EqyVmX&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0"
               target="_blank"
               rel="noopener noreferrer"
-              title="開啟 SharePoint：盤點BI-主題細部拆解"
-            >BI 主題細部盤點：簽約／出貨／應收帳款</a>
+              title="開啟 SharePoint 原檔"
+            >Ph3 BI服務改接數據模型-數據報表與來源盤點</a>
           </h2>
           <p class="support">三張 BI 盤點依主題拆解語意層與主表｜點標題開原檔</p>
         </div>
@@ -838,7 +865,50 @@
       </div>
     </section>
 
-  </main>
+  
+
+    <!-- 06. 目前資料分層（來源 Canva） -->
+    <section class="chapter" id="ch-architecture">
+      <header class="chapter__head">
+        <p class="chapter__num">06</p>
+        <div>
+          <h2>
+            <a
+              class="chapter__title-link"
+              href="https://canva.link/zqr8strbvmmli4c"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="開啟 Canva：目前資料分層"
+            >目前數據模型分層架構</a>
+          </h2>
+          <p class="support">原稿截自 Canva〈目前資料分層〉｜點標題開原圖</p>
+        </div>
+      </header>
+
+      <div class="layer-legend" aria-label="分層圖例">
+        <div class="layer-legend__item layer--ads"><strong>ADS</strong><span>應用資料服務</span></div>
+        <div class="layer-legend__item layer--dws"><strong>DWS</strong><span>彙總／主題服務</span></div>
+        <div class="layer-legend__item layer--dwd"><strong>DWD／DIM</strong><span>明細事實／維度</span></div>
+        <div class="layer-legend__item layer--ods"><strong>ODS</strong><span>來源落地</span></div>
+      </div>
+
+      <figure class="arch-shot arch-shot--overview">
+        <figcaption class="arch-shot__cap">
+          <span class="arch-shot__tag">總覽</span>
+          <span>全圖一覽｜細節可點標題開 Canva 原圖</span>
+        </figcaption>
+        <div class="arch-shot__scroll">
+          <img
+            src="assets/arch-overview.png"
+            alt="目前資料分層架構全圖總覽"
+            width="3460"
+            height="836"
+          />
+        </div>
+      </figure>
+    </section>
+
+</main>
 
   <footer class="report-footer">DataGov Weekly Report</footer>
 

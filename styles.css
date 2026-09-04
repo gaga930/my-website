@@ -327,6 +327,169 @@ body {
   opacity: 0.7;
 }
 
+.model-gantt {
+  margin-top: 1.15rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.model-gantt__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 100, 0.03);
+}
+
+.model-gantt__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--digi-navy);
+}
+
+.model-gantt__note {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+}
+
+.model-gantt__chart {
+  --label-w: 6.5rem;
+  position: relative;
+  padding: 0.55rem 0.85rem 0.85rem;
+}
+
+.model-gantt__axis {
+  position: relative;
+  height: 1.15rem;
+  margin: 0 0 0.35rem var(--label-w);
+  border-bottom: 1px solid var(--line);
+}
+
+.model-gantt__axis span {
+  position: absolute;
+  top: 0;
+  left: calc(var(--d) / var(--gantt-days) * 100%);
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.model-gantt__axis span:first-child {
+  transform: translateX(0);
+}
+
+.model-gantt__axis span:last-child {
+  transform: translateX(-100%);
+}
+
+.model-gantt__today {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 0.85rem;
+  left: calc(var(--label-w) + (100% - var(--label-w) - 1.7rem) * var(--d) / var(--gantt-days));
+  width: 0;
+  border-left: 1.5px dashed var(--digi-blue);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.model-gantt__today span {
+  position: absolute;
+  top: -0.05rem;
+  left: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--digi-blue);
+  white-space: nowrap;
+}
+
+.model-gantt__row {
+  display: grid;
+  grid-template-columns: var(--label-w) 1fr;
+  gap: 0.45rem;
+  align-items: center;
+  min-height: 2.1rem;
+}
+
+.model-gantt__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--digi-navy);
+  line-height: 1.25;
+}
+
+.model-gantt__track {
+  position: relative;
+  height: 1.35rem;
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(100% / 8 - 1px),
+      rgba(0, 0, 100, 0.05) calc(100% / 8 - 1px),
+      rgba(0, 0, 100, 0.05) calc(100% / 8)
+    );
+}
+
+.model-gantt__bar {
+  position: absolute;
+  top: 0.15rem;
+  bottom: 0.15rem;
+  left: calc(var(--s) / var(--gantt-days) * 100%);
+  width: calc((var(--e) - var(--s)) / var(--gantt-days) * 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 0.35rem;
+  border-radius: 3px;
+  min-width: 0.4rem;
+  overflow: hidden;
+}
+
+.model-gantt__bar span {
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.model-gantt__bar--done {
+  background: rgba(20, 230, 155, 0.35);
+  border: 1px solid var(--digi-mint);
+  color: #0a6b4f;
+}
+
+.model-gantt__bar--overdue {
+  background: rgba(255, 90, 110, 0.28);
+  border: 1px solid var(--digi-coral);
+  color: #8b1e2d;
+}
+
+.model-gantt__bar--active {
+  background: rgba(0, 90, 255, 0.22);
+  border: 1px solid var(--digi-blue);
+  color: var(--digi-navy);
+}
+
+.model-gantt__bar--todo {
+  background: rgba(154, 168, 184, 0.35);
+  border: 1px solid #9aa8b8;
+  color: #4a5568;
+}
+
 /* —— 03 分層架構：方塊＋連線 —— */
 .layer-legend {
   display: grid;
@@ -403,7 +566,7 @@ body {
   height: auto;
 }
 
-/* —— 05 獎金 Table 盤點 —— */
+/* —— 04 獎金 Table 盤點 —— */
 .bonus-summary {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -583,6 +746,23 @@ body {
 @media (max-width: 720px) {
   .progress-board {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .model-gantt__chart {
+    --label-w: 4.6rem;
+    overflow-x: auto;
+  }
+
+  .model-gantt__row {
+    min-width: 28rem;
+  }
+
+  .model-gantt__axis {
+    min-width: calc(28rem - 4.6rem - 0.45rem);
+  }
+
+  .model-gantt__bar span {
+    font-size: 0.52rem;
   }
 
   .layer-legend {
