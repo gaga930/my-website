@@ -3,6 +3,9 @@ name: web-slides
 description: >-
   以網頁製作簡報／週報內容：預設章節式連續捲動（非全螢幕分頁），避免空白佔高。
   含進度卡、SVG 甘特圖、表格盤點、附件全寬區隔等章節版型。
+  遇到照片都可以點選後放大；遇到影片可以點選播放。
+  一組多張現場照用拼貼感（不等大、輕交疊），不要均勻格線。
+  交疊不擋畫面重點（人物臉）；滑鼠移上暫時浮到最上層並稍微放大。
   當使用者要求製作簡報、投影片、presentation、deck、slides、週報、網頁式簡報，
   甘特圖／時程圖／附件，或在本專案新增／修改簡報內容時使用。
   上載／推送 git 請用 publish-to-git，不要用本 skill。
@@ -26,7 +29,10 @@ description: >-
 2. **一章一焦點**：每個章節一個清楚主張或交付物；標題即主張，不是空洞主題詞。
 3. **密度剛好**：可掃讀、對比足夠；遠距投影仍要可讀，但不靠拉高頁面灌空氣。
 4. **網頁優勢要用**：錨點導覽、可點連結、嵌入圖／表——服務論點，不炫技。
-5. **結構優先**：報告頭＋章節 TOC＋各章內容；講者備註可選，不假設有雷射筆 UI。
+5. **照片可放大、影片可播放**：遇到照片都可以點選後放大；遇到影片可以點選播放。靜態縮圖或只留外連文字不算完成。
+6. **現場照用拼貼，不要均勻格線**：一組多張活動／人物／現場照，做成不等大、輕交疊、微傾角的 collage；不要 `auto-fit` 等大相簿牆。地圖、截圖、文件另用可讀版型。
+7. **交疊不擋重點、hover 可浮起**：照片交疊時不要壓到畫面重點；有人物主角時臉不要被蓋掉。照片／影片滑鼠移上去暫時移到最上層並稍微放大，移開後縮回原樣。
+8. **結構優先**：報告頭＋章節 TOC＋各章內容；講者備註可選，不假設有雷射筆 UI。
 
 ### 何時才可用全螢幕分頁
 
@@ -41,9 +47,11 @@ description: >-
 - [ ] 3. 選定／沿用視覺方向（色票、字體）
 - [ ] 4. 依章節模板建立檔案與各 chapter
 - [ ] 5. 接上章節 TOC 錨點（可選：捲動高亮）
-- [ ] 6. 瀏覽器預覽：無無謂留白、對比、窄螢幕
-- [ ] 7. 精簡文案後交付
-- [ ] 8. （僅使用者要求時）上載 → 改用 publish-to-git skill
+- [ ] 6. 照片接 lightbox 放大；影片接點選播放（見「照片與影片」）
+- [ ] 7. 現場照拼貼（不等大、輕交疊）；地圖／文件不硬疊
+- [ ] 8. 瀏覽器預覽：無無謂留白、對比、窄螢幕、點圖放大、點影片播放（YouTube 不可 Error 153）；拼貼不像格線相簿；交疊不擋臉；hover 浮起後移開會縮回
+- [ ] 9. 精簡文案後交付
+- [ ] 10. （僅使用者要求時）上載 → 改用 publish-to-git skill
 ```
 
 ### Step 1–2：大綱先於視覺
@@ -65,7 +73,7 @@ description: >-
 decks/<deck-slug>/
 ├── index.html      # 報告頭 + TOC + chapters
 ├── styles.css
-├── deck.js         # 章節 TOC 高亮／平滑捲動（可選、保持輕量）
+├── deck.js         # TOC 高亮 + 照片放大／影片播放 lightbox
 └── assets/
 ```
 
@@ -87,6 +95,8 @@ decks/<deck-slug>/
 - 各章之間沒有大片無內容空白
 - 圖片／表格寬度吃滿內容欄，不強制撐滿視窗高度
 - 窄螢幕可捲動閱讀；TOC 仍可用
+- **點一張內容照片會放大**；**點一則影片會播放**（不是只開新分頁）；YouTube 內嵌不可出現 Error 153
+- 一組現場照是拼貼（大小不一、有交疊），不是等大格線；地圖／截圖仍可讀字
 - `prefers-reduced-motion` 下降級平滑捲動
 - 若有甘特圖：色條（SVG rect）清楚可見，不是只有文字日期
 
@@ -101,7 +111,7 @@ decks/<deck-slug>/
 | `claim` | 純主張 | 大字主張 + 一行解釋 |
 | `bullets` | 要點 | ≤5 點；可掃讀 |
 | `split` | 對照 | 左／右各一意 |
-| `figure` / `asset` | 圖表素材 | 圖為主；原稿超連結用可見或熱區保留 |
+| `figure` / `asset` | 圖表素材 | 圖為主；**點選後放大**；多張現場照用**拼貼**（不等大、輕交疊）；交疊不擋臉；hover 浮起放大；原稿超連結另以可見連結保留 |
 | `progress` / `matrix` | 進度表 | 成組對照時才用卡片式容器 |
 | `gantt`（SVG） | 起始→完成日時程 | **必須用 SVG 色條**；見下方「甘特圖」 |
 | `appendix` | 附件／附錄 | 正文後；**明顯全寬區隔**；見下方「附件區隔」 |
@@ -119,6 +129,83 @@ decks/<deck-slug>/
   <!-- 本體：圖、表、要點；高度隨內容 -->
 </section>
 ```
+
+## 照片與影片（必做）
+
+**遇到照片都可以點選後放大。遇到影片可以點選播放。** 有圖／影的 deck 必須實作，不是可選加分。
+
+### 硬性規則
+
+1. **照片**：內容照片（人物、現場、地圖、截圖、海報）一律可點；點了在燈箱顯示大圖，`object-fit: contain` 不裁切。Esc、點遮罩、關閉鈕可關。同一組（`[data-gallery]`）可用左右鍵切換。
+2. **影片**：YouTube、Google Drive、本機 `mp4`／`webm` 一律可點即播。用封面圖＋左下角 `.media__badge`（「播放影片」＋三角形 icon）；**字體與 icon 尺寸見下方「播放標記尺寸」**。點了在**燈箱內直接播放**（iframe 或 `<video controls autoplay>`），**不要**跳新視窗才開始播，也不要只放不會動的縮圖。
+3. 原稿若照片本身帶相簿／外連，**點圖仍是放大**；外連用圖下方可見 `<a>` 保留，不要讓點圖直接跳走。
+4. PPT 轉檔時略過裝飾用小圖：播放鈕圖示、1×1 間隔、純色方塊。真正的活動照／地圖／截圖都要可放大。原稿同一頁／同一主題的照片編成**一組拼貼**，不要整章倒進一個等大 grid。
+5. 燈箱 `z-index` 必須蓋過 sticky 報告頭。關閉時清掉 iframe／`src`，避免背景繼續播。
+6. 內嵌可能被擋（Drive 權限、YouTube 隱私）時，燈箱字幕可留「若未出現畫面可改新分頁」當後備，但**預設仍是頁內播放**，不要一點就 `window.open`。
+7. **YouTube**：點了在燈箱 iframe **直接播**，不要為了播放跳新視窗。iframe 對齊官方 oembed——**先**設 `referrerpolicy="strict-origin-when-cross-origin"`、掛進 DOM，**再**設 `src`（`embed/ID?autoplay=1&rel=0`），讓點擊手勢能傳給 autoplay。`<head>` 加 `<meta name="referrer" content="strict-origin-when-cross-origin">`，**不要**全站 `no-referrer`。**不要**在 embed URL 加 `origin=`。影片 ID 可能以 `-` 開頭，用第一個冒號切開 `yt:`。預覽請用 `http://` 本機伺服器，不要雙擊 HTML（`file://` 時 YouTube 內嵌會失敗）。
+
+最小標記見 [template.md](template.md)「照片放大／影片播放」。
+
+### 播放標記尺寸（必做）
+
+左下角 `.media__badge` 要讓人一眼看出可點擊播放。字與三角形 **用下列尺寸**，不要做成小標。
+
+| 項目 | 值 |
+|------|-----|
+| 文字 | `font-size: 1.05rem`（**≥ 1rem**；禁止 0.75–0.8rem） |
+| 字重 | `font-weight: 700` |
+| 播放三角形 icon | `::before` 的 `border-width: 0.55rem 0 0.55rem 0.92rem` |
+| 與字間距 | `gap: 0.5rem` |
+| 內距 | `padding: 0.48rem 0.85rem` |
+| 位置 | `left` / `bottom: 0.75rem` |
+
+完整 CSS 見 [template.md](template.md) `.media__badge`。
+
+### 拼貼感（一組多張現場照必做）
+
+**一組多張活動照、人物照、現場照，用拼貼（collage）呈現：大小不一、邊角輕交疊、微微傾斜，像桌上攤開的照片，不要做成等大格線相簿。**
+
+- 預設 `.gallery`：12 欄 CSS grid、`gap: 0`、`isolation: isolate`。用 `:has(> :nth-child(N):last-child)` 依**張數**套版型（2／3／4／5／6／8）。
+- 每組對應原稿**一頁或一個主題**。7 張拆成 3+4 或 2+5；9 張以上拆多組，各加小標 `.caption`。**1 張**用 `gallery--hero`，不要丟進空的 12×12 grid。
+- 縮圖在拼貼裡可用 `object-fit: cover`；燈箱大圖仍 `contain`、不裁切。直圖加 `media--tall`（`object-position` 偏上）。
+- 疊相紙感：`outline: 3px solid var(--bg)` + 陰影；`--tilt` 約 ±0.5–2deg，不要每張亂轉很大。
+- HTML 順序要配合版型：主角／大圖通常當該組第一張；人物加 `media--face`。
+- **不要拼貼、改可讀排法**：地圖、簡報截圖、文件、需要讀字的圖 → `gallery--docs`（有間距、不交疊、不傾斜、`object-fit: contain`）。單張主視覺、aftermovie 封面、全寬地圖 → `gallery--hero`。
+- 窄螢幕可減交疊、改較疏的欄，**仍不要**改成等大 `auto-fit` 磚牆。
+
+最小 CSS 見 [template.md](template.md)「拼貼、交疊與 hover」。
+
+### 交疊與 hover（有圖／影即做）
+
+**照片交疊的時候，不要壓到畫面重點，特別是有人物主角的時候，臉不要被蓋掉。**
+
+- 拼貼／交疊只咬邊角，不要從畫面中央切過去。
+- 有清楚人臉、主角的照片加 `media--face`：預設 `z-index` 高於風景／食物／徽章／地圖；`object-position` 偏上保住頭部。
+- 地圖、截圖、文件圖不要為了炫而交疊到字看不清。
+
+**照片／影片在滑鼠移上去的時候，能暫時移到最上層，並有稍微放大一點的效果；移開後就縮回原樣。**
+
+- 用 CSS 變數拆開傾斜與放大：`--tilt` 管交疊傾角，`--lift` 管 hover 縮放（約 `1.06–1.08`）。**不要**在 hover 寫死 `transform:`，否則會蓋掉傾角、也放大不了。
+- hover／`:focus-visible`：`z-index` 必須高過交疊層與 `media--face`（例如 24）；`transition` 約 0.2s。
+- 這是額外回饋，**不能**取代可見的播放標記；播放鈕仍要平時看得到，字 `1.05rem`、三角形約 `0.55rem × 0.92rem`。
+- `prefers-reduced-motion` 下降級 transition。
+
+最小 CSS 見 [template.md](template.md)「拼貼、交疊與 hover」。
+
+### 反模式（媒體）
+
+- `<img>` 沒包可點控件，只能看不能放大
+- 影片只有超連結、沒有點選播放
+- 用 `hover` 才出現播放鈕或放大提示
+- 播放標記字級過小（＜1rem），左下角「播放影片」看不清楚
+- 點圖卻 `window.open` 原檔，沒有頁內燈箱
+- 交疊切過人物臉或畫面主體
+- 活動照做成 `repeat(auto-fit, minmax(...))` 等大格線，或全部一樣大、一樣間距、零交疊
+- 整章幾十張塞同一個 `.gallery`；或把地圖／文件截圖硬拼貼到字被切掉
+- hover 寫死 `transform` 導致不能放大、或移開後回不去原傾角
+- 點影片卻 `window.open` 新視窗才播，燈箱裡沒有播放器
+- YouTube iframe 沒設 `referrerpolicy`、或先設 `src` 再掛進 DOM，點播放出現 Error 153
+- `<head>` 用 `no-referrer`，YouTube 拿不到 origin
 
 ## 甘特圖（起始日 → 完成日）
 
@@ -297,9 +384,9 @@ body { overflow-x: hidden; overflow-y: auto; } /* 允許捲動 */
 ```
 
 - 用 `clamp()` 管字級與內距
-- 圖片放 `assets/`，有意義的 `alt`
+- 圖片放 `assets/`，有意義的 `alt`；內容照片用 `.media` 點選放大
 - 原稿標題若有超連結，必須在網頁保留可點連結
-- JS 保持小：TOC active 狀態即可；不要實作 slide `show(i)` 翻頁器（除非投影模式）
+- JS：TOC active ＋ **lightbox**（圖放大／影播放）；不要實作 slide `show(i)` 翻頁器（除非投影模式）
 
 ## 反模式（禁止）
 
@@ -310,6 +397,9 @@ body { overflow-x: hidden; overflow-y: auto; } /* 允許捲動 */
 - 每章不同主題色／不同字體家族
 - 為了「看起來滿」加假統計、假徽章、裝飾 sticker
 - 甘特圖用 CSS absolute 色條導致只剩文字、看不到時程條
+- 內容照片不能點選放大、影片不能點選播放
+- 現場照排成等大格線相簿，沒有拼貼感
+- 交疊蓋住人臉；hover 不能浮起或移開後不縮回
 
 ## 交付方式
 
@@ -322,5 +412,5 @@ body { overflow-x: hidden; overflow-y: auto; } /* 允許捲動 */
 ## 附加資源
 
 - 視覺 tokens：[design.md](design.md)
-- 章節式最小模板：[template.md](template.md)
+- 章節式最小模板（含 lightbox）：[template.md](template.md)
 - 上載 Git／Pages：專案 skill **publish-to-git**

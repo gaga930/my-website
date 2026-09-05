@@ -100,6 +100,16 @@ description: 網頁式簡報的視覺 tokens、字級與版型細節；由 web-s
 
 - 圖表上方或下方放**一句結論**（不是「圖 1」）
 - 軸標、圖例要夠大；複雜圖改拆頁
+- 內容照片可點（`cursor: zoom-in`）；**不要**靠 hover 才知道能放大
+- 一組多張現場照用**拼貼**（不等大、輕交疊、微傾角），不要等大格線
+- 地圖／截圖／文件用 `gallery--docs` 或 `gallery--hero`，保證字可讀
+- 影片封面加可見播放標記（左下角「播放影片」＋三角形）
+  - 字：`font-size: 1.05rem`、`font-weight: 700`
+  - icon：`border-width: 0.55rem 0 0.55rem 0.92rem`
+  - 對比足夠，不依賴 hover
+- YouTube embed 必須帶 Referer（iframe `referrerpolicy`，對齊 oembed），避免 Error 153；不要在 URL 加 `origin=`
+- 交疊不擋畫面重點；人物主角的臉不要被蓋掉（`media--face` 在上層、只咬邊角）
+- 滑鼠移上：暫時最上層＋稍微放大；移開縮回（`--tilt` / `--lift`，約 200ms）
 
 ### outro
 
@@ -120,7 +130,8 @@ description: 網頁式簡報的視覺 tokens、字級與版型細節；由 web-s
 
 1. 翻頁淡入或短位移（≤300ms）
 2. 當頁焦點元素一次強調（數字／主張）
-3. 可選：章節頁背景輕微 kenburns 或漸層漂移
+3. 照片／影片 hover 浮起放大（≤250ms；移開即復原）
+4. 可選：章節頁背景輕微 kenburns 或漸層漂移
 
 禁止：無限脈衝、強 glow、全頁粒子、進場逐行過慢（講者已開講內容還在播動畫）。
 
