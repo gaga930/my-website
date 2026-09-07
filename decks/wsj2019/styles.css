@@ -256,6 +256,15 @@ a:focus-visible {
   padding: 0 var(--page-pad) 2.5rem;
 }
 
+.opener {
+  padding: 1.15rem 0 1.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.opener > .caption {
+  margin-top: 0;
+}
+
 .chapter {
   padding: 1.5rem 0 1.75rem;
   border-bottom: 1px solid var(--line);

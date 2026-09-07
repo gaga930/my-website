@@ -51,11 +51,36 @@
   let group = [];
   let index = 0;
 
-  const youtubeSrc = (id) =>
-    `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&playsinline=1&feature=oembed`;
+  const youtubeSrc = (id, start) => {
+    const params = new URLSearchParams({
+      autoplay: "1",
+      rel: "0",
+      playsinline: "1",
+      feature: "oembed",
+    });
+    if (Number.isFinite(start) && start > 0) params.set("start", String(Math.floor(start)));
+    return `https://www.youtube.com/embed/${encodeURIComponent(id)}?${params}`;
+  };
   const driveSrc = (id) => `https://drive.google.com/file/d/${id}/preview`;
   const driveOpen = (id) => `https://drive.google.com/file/d/${id}/view`;
-  const youtubeOpen = (id) => `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+  const youtubeOpen = (id, start) => {
+    const url = new URL("https://www.youtube.com/watch");
+    url.searchParams.set("v", id);
+    if (Number.isFinite(start) && start > 0) url.searchParams.set("t", `${Math.floor(start)}s`);
+    return url.toString();
+  };
+
+  const isExternalVideo = (video) =>
+    video && (video.kind === "url" || video.kind === "icloud");
+
+  const videoHref = (video, start) => {
+    if (!video) return "";
+    if (video.kind === "yt") return youtubeOpen(video.id, start);
+    if (video.kind === "drive") return driveOpen(video.id);
+    if (isExternalVideo(video)) return video.id;
+    if (video.kind === "file") return video.id;
+    return "";
+  };
 
   const mountFrame = (src, title) => {
     const iframe = document.createElement("iframe");
@@ -98,14 +123,39 @@
     const alt = el.querySelector("img")?.alt || el.dataset.caption || "";
 
     if (video) {
-      const href = video.kind === "yt" ? youtubeOpen(video.id) : driveOpen(video.id);
-      mountFrame(
-        video.kind === "yt" ? youtubeSrc(video.id) : driveSrc(video.id),
-        alt || "影片播放"
-      );
-      caption.replaceChildren();
-      if (alt) caption.append(alt, "　");
-      caption.append(fallbackLink(href, "若未出現畫面可改新分頁"));
+      const start = Number.parseInt(el.dataset.start || "", 10);
+      const href = videoHref(video, start);
+
+      if (isExternalVideo(video)) {
+        const img = document.createElement("img");
+        img.src = el.dataset.full || el.querySelector("img")?.src;
+        img.alt = alt;
+        stage.append(img);
+        caption.replaceChildren();
+        if (alt) caption.append(alt, "　");
+        caption.append(fallbackLink(href, "在 iCloud 開啟影片"));
+      } else if (video.kind === "yt" || video.kind === "drive") {
+        mountFrame(
+          video.kind === "yt" ? youtubeSrc(video.id, start) : driveSrc(video.id),
+          alt || "影片播放"
+        );
+        caption.replaceChildren();
+        if (alt) caption.append(alt, "　");
+        caption.append(fallbackLink(href, "若未出現畫面可改新分頁"));
+      } else if (video.kind === "file") {
+        const vid = document.createElement("video");
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.src = video.id;
+        stage.append(vid);
+        caption.textContent = alt;
+      } else {
+        const img = document.createElement("img");
+        img.src = el.dataset.full || el.querySelector("img")?.src;
+        img.alt = alt;
+        stage.append(img);
+        caption.textContent = alt;
+      }
     } else {
       const img = document.createElement("img");
       img.src = el.dataset.full || el.querySelector("img")?.src;
@@ -123,6 +173,10 @@
     const gallery = button.closest("[data-gallery]") || document;
     group = Array.from(gallery.querySelectorAll(".media"));
     index = Math.max(0, group.indexOf(button));
+    const video = parseVideo(button.dataset.video);
+    if (isExternalVideo(video)) {
+      window.open(video.id, "_blank", "noopener");
+    }
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
