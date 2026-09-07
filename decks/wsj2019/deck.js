@@ -73,6 +73,12 @@
   const isExternalVideo = (video) =>
     video && (video.kind === "url" || video.kind === "icloud");
 
+  const externalLinkLabel = (href) => {
+    if (/icloud\.com/i.test(href)) return "在 iCloud 開啟影片";
+    if (/docs\.google\.com|slides\.google/i.test(href)) return "在 Google 簡報開啟";
+    return "在新分頁開啟";
+  };
+
   const videoHref = (video, start) => {
     if (!video) return "";
     if (video.kind === "yt") return youtubeOpen(video.id, start);
@@ -133,7 +139,7 @@
         stage.append(img);
         caption.replaceChildren();
         if (alt) caption.append(alt, "　");
-        caption.append(fallbackLink(href, "在 iCloud 開啟影片"));
+        caption.append(fallbackLink(href, externalLinkLabel(href)));
       } else if (video.kind === "yt" || video.kind === "drive") {
         mountFrame(
           video.kind === "yt" ? youtubeSrc(video.id, start) : driveSrc(video.id),
